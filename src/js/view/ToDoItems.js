@@ -9,7 +9,12 @@ class ToDoItems extends Component {
     
     this.props.toDoItems.forEach((item) => {
       rows.push((
-        <ToDoItem completed={item.completed} text={item.text} key={item.id} />
+        <ToDoItem 
+          completed={item.completed} 
+          text={item.text} 
+          key={item.id}
+          id={item.id}
+          toggleToDo={this.props.toggleToDoHandler}/>
       ));
     });
     

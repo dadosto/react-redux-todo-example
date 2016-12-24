@@ -7,6 +7,7 @@ import ToDo from './reducers/toDo.js';
 import VisibilityFilter from './reducers/visibilityFilter.js';
 //import toDoApp from './reducers/toDoApp.js';
 import ToDoItems from './view/ToDoItems.js';
+import AddToDoItem from './view/AddToDoItem.js';
 
 ReducerTests();
 
@@ -20,16 +21,29 @@ const store = createStore(toDoApp);
 let initialToDoAction = {
   type: Constants.addToDoAction,
   toDo: {
-    text: 'Item1',
+    text: 'Eat',
     id: 0
   }
 }
 
 store.dispatch(initialToDoAction);
 
-console.log('Initial state: ', store.getState().toDoItems);
+const render = () => {
+  ReactDOM.render(
+  
+    <div style={{margin: '30px'}}>
+      <h2>To Do</h2>
+      <AddToDoItem 
+        nextToDoItem={store.getState().toDoItems.length + 1}
+        addToDoItem={store.dispatch} />
+      <ToDoItems 
+        toDoItems={store.getState().toDoItems} 
+        toggleToDoHandler={store.dispatch}/>
+    </div>,
+    
+	  document.getElementById('app')
+  );
+};
 
-ReactDOM.render(
-	<ToDoItems toDoItems={store.getState().toDoItems} />,
-	document.getElementById('app')
-);
+store.subscribe(render);
+render();
