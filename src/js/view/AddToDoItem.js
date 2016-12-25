@@ -9,15 +9,20 @@ class AddToDoItem extends Component {
   }
   
   handleClick () {
-    console.log('this.props.nextToDoItem = ', this.props.nextToDoItem);
-    this.props.addToDoItem({
-      type: Constants.addToDoAction,
-      toDo: {
-        text: this.input.value,
-        id: this.props.nextToDoItem,
-        key: this.props.nextToDoItem
-      }  
-    })
+    
+    let txt = this.input.value;
+    
+    if (txt && txt !== '') {
+      this.props.addToDoItem({
+        type: Constants.addToDoAction,
+        toDo: {
+          text: txt,
+          id: this.props.nextToDoItem,
+          key: this.props.nextToDoItem
+        }
+      });
+      this.input.value = '';
+    } 
   }
   
   render() {

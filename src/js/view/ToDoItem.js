@@ -18,21 +18,16 @@ class ToDoItem extends Component {
   }
   
   render() {
+    
     let toDoItemStyle = {
-      color: '#333',
+      color: this.props.completed ? '#766' : '#333',
+      textDecoration: this.props.completed ? 'line-through' : 'none',
       margin: '10px'
-    }
-    if (this.props.completed) {
-      toDoItemStyle = {
-        color: '#766',
-        textDecoration: 'line-through',
-        margin: '10px'
-      }
-    }
-    console.log('Props = ', this.props);
+    };
+    
     return (
       <li style={toDoItemStyle} onClick={this.onClickHandler}>
-        {this.props.text}
+        <h4>{this.props.text}</h4>
       </li>
     );
   }

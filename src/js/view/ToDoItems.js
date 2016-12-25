@@ -1,13 +1,31 @@
 import React, {Component} from 'react';
 import ToDoItem from './ToDoItem.js';
+import Constants from '../Constants.js';
 
 class ToDoItems extends Component {
   
+  visibleToDoItems(toDoItems, visibilityFilter) {
+    switch (visibilityFilter) {
+      case Constants.getAllVisibilityFilter:
+        return toDoItems;
+      case Constants.getActiveVisibilityFilter:
+        return toDoItems.filter((item) => {
+          return !item.completed;
+        });
+      case Constants.getCompletedVisibilityFilter:
+        return toDoItems.filter((item) => {
+          return item.completed;
+        });
+    }
+  }
+  
   render() {
+    
+    const visibileToDoItems = this.visibleToDoItems(this.props.toDoItems, this.props.visibilityFilter);
     
     let rows = [];
     
-    this.props.toDoItems.forEach((item) => {
+    visibileToDoItems.forEach((item) => {
       rows.push((
         <ToDoItem 
           completed={item.completed} 

@@ -23,7 +23,6 @@ const toDo = (state = [], action) => {
         return toDo;
       });
       
-      console.log('Returning new state: ', newState);
       return newState;
     };
 
