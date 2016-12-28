@@ -1,15 +1,9 @@
 import Constants from '../Constants.js';
 
-let nextToDoItemId = 0;
-
-const AddToDoItemAction = (text) => {
-  return {
-    type: Constants.addToDoAction,
-    toDo: {
-      text: text,
-      id: nextToDoItemId++
-    }
-  };
-}
+const AddToDoItemAction = (text) => ({
+  type: Constants.addToDoAction,
+  text: text,
+  id: new Date().getTime()
+});
 
 export default AddToDoItemAction;

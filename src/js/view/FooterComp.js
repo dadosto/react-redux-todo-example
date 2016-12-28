@@ -8,17 +8,17 @@ export default function FooterComp(props) {
     <div>
       <VisibilityFilterComp
         filter={Constants.getAllVisibilityFilter}>
-        "All"
+        All
       </VisibilityFilterComp>
     
       <VisibilityFilterComp
         filter={Constants.getActiveVisibilityFilter}>
-        "Active"
+        Active
       </VisibilityFilterComp>
     
       <VisibilityFilterComp
         filter={Constants.getCompletedVisibilityFilter}>
-        "Completed"
+        Completed
       </VisibilityFilterComp>
     </div>
   ); 

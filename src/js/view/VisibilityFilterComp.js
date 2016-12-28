@@ -5,19 +5,16 @@ import {connect} from 'react-redux';
 import SetVisibilityFilterAction from '../actionCreators/setVisibilityFilterActionCreator.js';
 
 // ownProps = container component's own props
-const mapStateToProps = (state, ownProps) => {
-  return {
-    active: ownProps.filter === state.visibilityFilter
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  active: ownProps.filter === state.visibilityFilter
+}
+);
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: () => {
-      dispatch(SetVisibilityFilterAction(ownProps.filter));
-    }
-  };
-};
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onClick() {
+    dispatch(SetVisibilityFilterAction(ownProps.filter));
+  }
+});
 
 const VisibilityFilterComp = connect(mapStateToProps, mapDispatchToProps)(LinkComponent);
 

@@ -25,7 +25,7 @@ let addNewToDoTest = () => {
   
   let addNewItemAction = {
     type: Constants.addToDoAction,
-    toDo: newItem
+    ...newItem
   }
   
   deepFreeze(stateBefore);
@@ -45,9 +45,7 @@ let toggleToDoTest = () => {
   
   let toggleToDoAction = {
     type: Constants.toggleToDoAction,
-    toDo: {
-      id: 0
-    }
+    id: 0
   };
   
   deepFreeze(stateBefore, toggleToDoAction);
@@ -110,7 +108,7 @@ let toDoAppReducerTests = () => {
   
   let addNewItemAction = {
     type: Constants.addToDoAction,
-    toDo: newItem
+    ...newItem
   };
   
   deepFreeze(stateBefore);

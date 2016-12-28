@@ -11,13 +11,13 @@ export default function ToDoItems(props) {
   
   return (
     <ul>
-      {toDoItems.map((toDo) => {
+      {toDoItems.map(toDo => 
         <ToDoItem 
           key={toDo.id}
           {...toDo} // it spreads the toDo properties, so that they end up as props on the toDoItem component
-          onClick={onToDoItemClick(toDo.id)}
+          onClick={() => onToDoItemClick(toDo.id)}
         />
-      })}
+      )}
     </ul>
   );
 }

@@ -1,13 +1,8 @@
 import Constants from '../Constants.js';
 
-
-const ToggleToDoAction = (id) => {
-  return { 
-    type: Constants.toggleToDoAction,
-    toDo: {
-      id: id
-    }
-  };
-}
+const ToggleToDoAction = (id) => ({ 
+  type: Constants.toggleToDoAction,
+  id: id
+});
 
 export default ToggleToDoAction;

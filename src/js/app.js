@@ -15,8 +15,20 @@ const toDoAppReducer = combineReducers({
   visibilityFilter: VisibilityFilter
 });
 
+const persistedState = {
+  toDoItems: [
+    {
+      id: '0',
+      text: 'Eat and sleep',
+      completed: false
+    }
+  ]
+}
+
+const store = createStore(toDoAppReducer, persistedState);
+
 ReactDOM.render(
-  <Provider store={createStore(toDoAppReducer)}>
+  <Provider store={store}>
     <ToDoApp />
   </Provider>,
   document.getElementById('app')
