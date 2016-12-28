@@ -1,32 +1,24 @@
 import React, {Component} from 'react';
 import Constants from '../Constants.js';
+import LinkComponent from './LinkComponent.js';
+import {connect} from 'react-redux';
+import SetVisibilityFilterAction from '../actionCreators/setVisibilityFilterActionCreator.js';
 
-export default class VisibilityFilterComp extends Component {
-  
-  constructor(props) {
-    super(props);
-    this.onClickHandler = this.onClickHandler.bind(this);
-  }
-  
-  onClickHandler(event) {
-    event.preventDefault();
-    this.props.setFilter({
-      type: Constants.visibilityFilterAction,
-      filter: this.props.filter
-    });
-  }
-  
-  render() {
-    let linkStyle = {
-      fontSize: '16px',
-      paddingRight: '6px', 
-      textDecoration: this.props.currentFilter === this.props.filter ? 'none' : 'underline',
-      color: this.props.currentFilter === this.props.filter ? '#333' : '#69b'
-    };
-    return (
-      <span>
-        <a href="#" onClick={this.onClickHandler} style={linkStyle}> { this.props.text } </a>
-      </span>
-    )
-  }
-}
+// ownProps = container component's own props
+const mapStateToProps = (state, ownProps) => {
+  return {
+    active: ownProps.filter === state.visibilityFilter
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    onClick: () => {
+      dispatch(SetVisibilityFilterAction(ownProps.filter));
+    }
+  };
+};
+
+const VisibilityFilterComp = connect(mapStateToProps, mapDispatchToProps)(LinkComponent);
+
+export default VisibilityFilterComp;

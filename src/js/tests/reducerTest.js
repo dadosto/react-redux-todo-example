@@ -34,7 +34,7 @@ let addNewToDoTest = () => {
   expect(toDo(stateBefore, addNewItemAction))
     .toEqual(expectedStateAfter);
   
-  console.log('addNewToDoTest test passed');
+  //console.log('addNewToDoTest test passed');
   
 };
 
@@ -57,7 +57,7 @@ let toggleToDoTest = () => {
   expect(toDo(stateBefore, toggleToDoAction))
     .toEqual(expStateAfter);
   
-  console.log('toggleToDoTest test passed');
+  //console.log('toggleToDoTest test passed');
 };
 
 let setVisibilityToActiveTest = () => {
@@ -76,7 +76,7 @@ let setVisibilityToActiveTest = () => {
   expect(visibilityFilter(stateBefore, setVisibilityToActiveAction))
     .toEqual(expectedStateAfter);
   
-  console.log('setVisibilityToActiveTest test passed');  
+  //console.log('setVisibilityToActiveTest test passed');  
 };
 
 let setDefaultVisibilityTest = () => {
@@ -92,7 +92,7 @@ let setDefaultVisibilityTest = () => {
   expect(visibilityFilter(undefined, setDefaultVisibility))
     .toEqual(expectedStateAfter);
   
-  console.log('setDefaultVisibilityTest test passed');  
+  //console.log('setDefaultVisibilityTest test passed');  
 };
 
 let toDoAppReducerTests = () => {
@@ -118,7 +118,7 @@ let toDoAppReducerTests = () => {
   expect(toDoApp(stateBefore, addNewItemAction))
     .toEqual(expectedStateAfterNewItem);
   
-  console.log('toDoAppReducerTests test passed'); 
+  //console.log('toDoAppReducerTests test passed'); 
 }
 
 const ReducerTests = () => {

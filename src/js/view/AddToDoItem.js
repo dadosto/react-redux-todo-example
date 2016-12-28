@@ -1,41 +1,44 @@
 import React, {Component} from 'react';
 import Constants from '../Constants.js';
+import {connect} from 'react-redux';
+import AddToDoItemAction from '../actionCreators/addToDoActionCreator.js';
 
-class AddToDoItem extends Component {
+/*let AddToDoItem = ({dispatch}) => {
   
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
+  // Functional components do not have instances -> we can't use 'this'
+  let input; 
   
-  handleClick () {
+  return (
+    <div>
+      <input type="text" ref={node => {input = node;}} />
     
-    let txt = this.input.value;
-    
-    if (txt && txt !== '') {
-      this.props.addToDoItem({
-        type: Constants.addToDoAction,
-        toDo: {
-          text: txt,
-          id: this.props.nextToDoItem,
-          key: this.props.nextToDoItem
-        }
-      });
-      this.input.value = '';
-    } 
-  }
-  
-  render() {
-    return (
-      <div>
-        <input 
-          type="text" 
-          id="toDoText" 
-          ref={node => {this.input=node;}} />
-        <button onClick={this.handleClick}>Add</button>
-      </div>
-    );
-  }
+      <button onClick={() => {dispatch(AddToDoItemAction(input.value)); input.value = '';}}>
+        Add
+      </button>
+
+    </div>
+  );
 }
+
+AddToDoItem = connect()(AddToDoItem); */
+
+let AddToDoItem = ({ dispatch }) => {
+  let input;
+
+  return (
+    <div>
+      <input ref={node => {
+        input = node;
+      }} />
+      <button onClick={() => {
+        dispatch(AddToDoItemAction(input.value));
+        input.value = '';
+      }}>
+        Add Todo
+      </button>
+    </div>
+  );
+};
+AddToDoItem = connect()(AddToDoItem);
 
 export default AddToDoItem;

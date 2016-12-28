@@ -1,36 +1,29 @@
 import React, {Component} from 'react';
 import Constants from '../Constants.js';
 
-class ToDoItem extends Component {
+export default function ToDoItem(props) {
   
-  constructor(props) {
-    super(props);
-    this.onClickHandler = this.onClickHandler.bind(this);
-  }
+  const {
+    onClick,
+    completed,
+    text
+  } = props;
   
-  onClickHandler() {
-    this.props.toggleToDo({
-      type: Constants.toggleToDoAction,
-      toDo: {
-        id: this.props.id
-      }
-    });
-  }
-  
-  render() {
-    
-    let toDoItemStyle = {
-      color: this.props.completed ? '#766' : '#333',
-      textDecoration: this.props.completed ? 'line-through' : 'none',
+  let toDoItemStyle = {
+      color: completed ? '#766' : '#333',
+      textDecoration: completed ? 'line-through' : 'none',
       margin: '10px'
     };
-    
-    return (
-      <li style={toDoItemStyle} onClick={this.onClickHandler}>
-        <h4>{this.props.text}</h4>
-      </li>
-    );
-  }
+  
+  return (
+    <li onClick={onClick} style={toDoItemStyle} >
+      {text}
+    </li>
+  );
 }
 
-export default ToDoItem;
+ToDoItem.propTypes = {
+  onClick: React.PropTypes.func,
+  completed: React.PropTypes.bool,
+  text: React.PropTypes.string.isRequired
+}

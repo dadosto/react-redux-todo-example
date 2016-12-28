@@ -2,46 +2,22 @@ import React, {Component} from 'react';
 import ToDoItem from './ToDoItem.js';
 import Constants from '../Constants.js';
 
-class ToDoItems extends Component {
+export default function ToDoItems(props) {
   
-  visibleToDoItems(toDoItems, visibilityFilter) {
-    switch (visibilityFilter) {
-      case Constants.getAllVisibilityFilter:
-        return toDoItems;
-      case Constants.getActiveVisibilityFilter:
-        return toDoItems.filter((item) => {
-          return !item.completed;
-        });
-      case Constants.getCompletedVisibilityFilter:
-        return toDoItems.filter((item) => {
-          return item.completed;
-        });
-    }
-  }
+  const {
+    toDoItems,
+    onToDoItemClick
+  } = props;
   
-  render() {
-    
-    const visibileToDoItems = this.visibleToDoItems(this.props.toDoItems, this.props.visibilityFilter);
-    
-    let rows = [];
-    
-    visibileToDoItems.forEach((item) => {
-      rows.push((
+  return (
+    <ul>
+      {toDoItems.map((toDo) => {
         <ToDoItem 
-          completed={item.completed} 
-          text={item.text} 
-          key={item.id}
-          id={item.id}
-          toggleToDo={this.props.toggleToDoHandler}/>
-      ));
-    });
-    
-    return (
-      <ul>
-        { rows }
-      </ul>
-    );
-  }
+          key={toDo.id}
+          {...toDo} // it spreads the toDo properties, so that they end up as props on the toDoItem component
+          onClick={onToDoItemClick(toDo.id)}
+        />
+      })}
+    </ul>
+  );
 }
-
-export default ToDoItems;

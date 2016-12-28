@@ -5,9 +5,14 @@ const toDo = (state = [], action) => {
   switch (action.type) {
     
     case Constants.addToDoAction: {
+      
       let newItem = Object.assign({}, action.toDo);
       newItem.completed = false;
-      return state.concat(newItem);
+      
+      return [
+        ... state,
+        newItem
+      ]
     };
       
     case Constants.toggleToDoAction: {
