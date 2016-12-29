@@ -17,13 +17,15 @@ const getVisibleToDoItems = (toDoItems, visibilityFilter) => {
         return toDoItems.filter((item) => {
           return item.completed;
         });
+      default:
+        throw new Error(`Unknown filter: ${visibilityFilter}`);
     }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   toDoItems: getVisibleToDoItems(
     state.toDoItems,
-    state.visibilityFilter
+    ownProps.visibilityFilter
   )
 });
 

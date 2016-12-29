@@ -1,25 +1,25 @@
 import React from 'react';
 import Constants from '../Constants.js';
-import VisibilityFilterComp from './VisibilityFilterComp.js';
+import FilterLink from './FilterLink.js';
 
 export default function FooterComp(props) {
 
   return (
     <div>
-      <VisibilityFilterComp
+      <FilterLink
         filter={Constants.getAllVisibilityFilter}>
         All
-      </VisibilityFilterComp>
+      </FilterLink>
     
-      <VisibilityFilterComp
+      <FilterLink
         filter={Constants.getActiveVisibilityFilter}>
         Active
-      </VisibilityFilterComp>
+      </FilterLink>
     
-      <VisibilityFilterComp
+      <FilterLink
         filter={Constants.getCompletedVisibilityFilter}>
         Completed
-      </VisibilityFilterComp>
+      </FilterLink>
     </div>
   ); 
 }

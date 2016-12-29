@@ -4,7 +4,7 @@ import VisibleToDoList from './VisibleToDoList.js';
 import AddToDoItem from './AddToDoItem.js';
 import FooterComp from './FooterComp.js';
 
-export default function ToDoApp() {
+export default function ToDoApp({params}) {
   
   return (
     <div style={{margin: '30px'}}>
@@ -15,10 +15,12 @@ export default function ToDoApp() {
     
       <AddToDoItem />
     
-      <VisibleToDoList />      
+      <VisibleToDoList visibilityFilter={params.filter || Constants.getAllVisibilityFilter} />  
 
       <FooterComp />
     
     </div>
   );
 }
+
+// Route provided params.filter. In case params.filter is empty, we pass 'all' as a fallback
