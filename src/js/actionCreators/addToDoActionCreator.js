@@ -1,9 +1,10 @@
 import Constants from '../Constants.js';
+import {v4} from 'node-uuid';
 
 const AddToDoItemAction = (text) => ({
   type: Constants.addToDoAction,
   text: text,
-  id: new Date().getTime()
+  id: v4()
 });
 
 export default AddToDoItemAction;
